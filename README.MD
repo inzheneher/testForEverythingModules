@@ -1,0 +1,1 @@
+**Almost the same as testForEverything, but new ideas will seat in separate modules.**
