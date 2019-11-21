@@ -10,6 +10,9 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>mapper</module>
+        <module>fileReader</module>
+        <module>iban</module>
+        <module>filtering</module>
     </modules>
 
 </project>
