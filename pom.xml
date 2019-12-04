@@ -13,6 +13,7 @@
         <module>fileReader</module>
         <module>iban</module>
         <module>filtering</module>
+        <module>methodInliner</module>
     </modules>
 
 </project>
