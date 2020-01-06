@@ -1,6 +1,9 @@
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -14,15 +17,15 @@ public class Main {
         }
     }
 
-    private static long getMovieAmount(String path) throws IOException {
-        return Files
+    private static int getMovieAmount(String path) throws IOException {
+        List<String> movieList = Files
                 .walk(Paths.get(path))
                 .parallel()
                 .filter(Files::isRegularFile)
-                .filter(Files::isWritable)
-                .filter(f ->
-                        f.getFileName().toString().contains(".avi") ||
-                                f.getFileName().toString().contains(".mkv"))
-                .count();
+                .map(Path::toString)
+                .filter(f -> f.endsWith(".avi") || f.endsWith(".mkv"))
+                .collect(Collectors.toList());
+        movieList.stream().forEach(System.out::println);
+        return movieList.size();
     }
 }
