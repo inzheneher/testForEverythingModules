@@ -14,6 +14,7 @@
         <module>iban</module>
         <module>filtering</module>
         <module>methodInliner</module>
+        <module>fileCounter</module>
     </modules>
 
 </project>
