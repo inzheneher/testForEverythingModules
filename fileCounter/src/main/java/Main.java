@@ -10,8 +10,9 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            long moviesAmount = getMovieAmount("/home/inzheneher") + getMovieAmount("/media/DATA/movies");
-            System.out.println(moviesAmount);
+            long moviesAmount =
+                    getMovieAmount("/home/inzheneher") + getMovieAmount("/media/DATA/");
+            System.out.println("Total movies amount: " + moviesAmount);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -23,9 +24,9 @@ public class Main {
                 .parallel()
                 .filter(Files::isRegularFile)
                 .map(Path::toString)
-                .filter(f -> f.endsWith(".avi") || f.endsWith(".mkv"))
+                .filter(f -> f.endsWith(".avi") || f.endsWith(".mkv") || f.endsWith(".mp4"))
                 .collect(Collectors.toList());
-        movieList.stream().forEach(System.out::println);
+        movieList.forEach(System.out::println);
         return movieList.size();
     }
 }
