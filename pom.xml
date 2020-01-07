@@ -15,6 +15,7 @@
         <module>filtering</module>
         <module>methodInliner</module>
         <module>fileCounter</module>
+        <module>valentinesDay</module>
     </modules>
 
 </project>
