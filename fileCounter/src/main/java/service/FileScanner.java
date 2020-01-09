@@ -2,6 +2,7 @@ package service;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -18,28 +19,32 @@ public class FileScanner {
 
     public void scanner(String[] args) {
         if (args.length > 0) {
-            START_TIME = System.nanoTime();
-            for (String arg : args) {
-                System.out.println(arg);
-            }
-            STOP_TIME = System.nanoTime();
-            logTime(NS, START_TIME, STOP_TIME);
-        } else {
             START_TIME = System.currentTimeMillis();
-            try {
-                long moviesAmount =
-                        getMovieAmount("/home/inzheneher") + getMovieAmount("/media/DATA/");
-                System.out.println("Total movies amount: " + moviesAmount);
-            } catch (IOException e) {
-                e.printStackTrace();
+            for (String arg : args) {
+                if (isPathExist(arg)) {
+                    try {
+                        long moviesAmount = getMovieAmount(arg);
+                        LOGGER.info("Total movies amount: " + moviesAmount);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    LOGGER.info("Specified path does not exist. Set the path that exist.");
+                }
             }
             STOP_TIME = System.currentTimeMillis();
             logTime(MS, START_TIME, STOP_TIME);
+        } else {
+            LOGGER.info("There is no path for search. Set the path.");
         }
     }
 
     private void logTime(String time, long start, long stop) {
         LOGGER.info("WORKING_TIME: ".concat(String.valueOf(stop - start)).concat(" ").concat(time));
+    }
+
+    private boolean isPathExist(String path) {
+        return Files.exists(Paths.get(path), LinkOption.NOFOLLOW_LINKS);
     }
 
     private int getMovieAmount(String path) throws IOException {
