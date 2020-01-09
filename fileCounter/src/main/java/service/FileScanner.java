@@ -8,16 +8,15 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-public class Main {
+public class FileScanner {
 
-    private static Logger LOGGER = Logger.getLogger(Main.class.getName());
-    private static long START_TIME;
-    private static long STOP_TIME;
-    private static String NS = "ns";
-    private static String MS = "ms";
+    private Logger LOGGER = Logger.getLogger(FileScanner.class.getName());
+    private long START_TIME;
+    private long STOP_TIME;
+    private String NS = "ns";
+    private String MS = "ms";
 
-    public static void main(String[] args) {
-
+    public void scanner(String[] args) {
         if (args.length > 0) {
             START_TIME = System.nanoTime();
             for (String arg : args) {
@@ -39,11 +38,11 @@ public class Main {
         }
     }
 
-    private static void logTime(String time, long start, long stop) {
+    private void logTime(String time, long start, long stop) {
         LOGGER.info("WORKING_TIME: ".concat(String.valueOf(stop - start)).concat(" ").concat(time));
     }
 
-    private static int getMovieAmount(String path) throws IOException {
+    private int getMovieAmount(String path) throws IOException {
         List<String> movieList = Files
                 .walk(Paths.get(path))
                 .parallel()
