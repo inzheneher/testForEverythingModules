@@ -16,6 +16,8 @@
         <module>methodInliner</module>
         <module>applets</module>
         <module>logger</module>
+        <module>fileCounter</module>
+        <module>valentinesDay</module>
     </modules>
 
 </project>
