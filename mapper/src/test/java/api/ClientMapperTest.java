@@ -4,6 +4,8 @@ import dto.ClientDTO;
 import model.Client;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class ClientMapperTest {
@@ -12,7 +14,7 @@ public class ClientMapperTest {
     public void shouldMapClientToClientDTO() {
 
         Client client =
-                new Client("Gnitioh Baqeccitrl", 53, new String[]{"India", "Singapore", "Malaysia", "USA"});
+                new Client("Gnitioh Baqeccitrl", 53, new String[]{"India", "Singapore", "Malaysia", "USA"}, new ArrayList<String>(){{add("Peter"); add("Ivan"); add("Igor");}});
 
         ClientDTO clientDTO = api.ClientMapper.INSTANCE.clientToClientDTO(client);
 
@@ -20,5 +22,6 @@ public class ClientMapperTest {
         assertEquals(clientDTO.getClientName(), client.getName());
         assertEquals(clientDTO.getClientAge(), client.getAge());
         assertArrayEquals(clientDTO.getClientAddresses(), client.getAddresses());
+        assertEquals(clientDTO.getClientFolks(), client.getFolks());
     }
 }

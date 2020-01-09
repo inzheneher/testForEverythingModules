@@ -14,5 +14,6 @@ public interface ClientMapper {
     @Mapping(source = "name", target = "clientName")
     @Mapping(source = "age", target = "clientAge")
     @Mapping(source = "addresses", target = "clientAddresses")
+    @Mapping(source = "folks", target = "clientFolks")
     ClientDTO clientToClientDTO(Client client);
 }
