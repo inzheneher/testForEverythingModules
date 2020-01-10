@@ -1,10 +1,11 @@
-package service;
+package gov.service;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -17,19 +18,21 @@ public class FileScanner {
     private String NS = "ns";
     private String MS = "ms";
 
-    public void scanner(String[] args) {
+    public List<String> scanner(String[] args) {
+        List<String> movieList = new ArrayList<>();
         if (args.length > 0) {
             START_TIME = System.currentTimeMillis();
             for (String arg : args) {
                 if (isPathExist(arg)) {
                     try {
-                        long moviesAmount = getMovieAmount(arg);
-                        LOGGER.info("Total movies amount: " + moviesAmount);
+                        movieList = getMovieList(arg);
+//                        long moviesAmount = getMovieAmount(arg);
+//                        LOGGER.info("Total movies amount: " + moviesAmount);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 } else {
-                    LOGGER.info("Specified path does not exist. Set the path that exist.");
+                    LOGGER.info("Specified path '".concat(arg).concat("' does not exist. Set the path that exist."));
                 }
             }
             STOP_TIME = System.currentTimeMillis();
@@ -37,6 +40,7 @@ public class FileScanner {
         } else {
             LOGGER.info("There is no path for search. Set the path.");
         }
+        return movieList;
     }
 
     private void logTime(String time, long start, long stop) {
@@ -57,5 +61,15 @@ public class FileScanner {
                 .collect(Collectors.toList());
         movieList.forEach(System.out::println);
         return movieList.size();
+    }
+
+    private List<String> getMovieList(String path) throws IOException {
+        return Files
+                .walk(Paths.get(path))
+                .parallel()
+                .filter(Files::isRegularFile)
+                .map(Path::toString)
+                .filter(f -> f.endsWith(".avi") || f.endsWith(".mkv") || f.endsWith(".mp4"))
+                .collect(Collectors.toList());
     }
 }
