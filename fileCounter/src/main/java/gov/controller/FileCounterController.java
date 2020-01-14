@@ -16,14 +16,7 @@ public class FileCounterController {
 
     private Logger logger = Logger.getLogger(FileCounterController.class.getName());
 
-    @GetMapping("/find_movies")
-    public String findMovies(Model model) {
-        List<String> list = new FileScanner().scanner(new String[]{"/some/path/", "/home/inzheneher/"});
-        model.addAttribute("list", list);
-        return "find_movies";
-    }
-
-    @GetMapping("/find")
+    @GetMapping("/input_path")
     public String showSubmitForm(Model model) {
         model.addAttribute("paths", new PathCollector());
         return "input_path";
