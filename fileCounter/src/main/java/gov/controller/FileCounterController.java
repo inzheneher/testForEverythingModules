@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 @Controller
@@ -26,8 +27,8 @@ public class FileCounterController {
     @PostMapping("/input_path")
     public String submitPathsAndFindMovies(@ModelAttribute PathCollector paths, Model model) {
         logger.info("Paths: " + paths.getPath());
-        List<String> list = fileScanner.scanner(paths.getPath().split(" "));
-        model.addAttribute("list", list);
+        Map<Integer, String> moviesMap = fileScanner.scanFileSystemAndGetMoviesMap(paths.getPath().split(" "));
+        model.addAttribute("moviesMap", moviesMap);
         return "results";
     }
 }

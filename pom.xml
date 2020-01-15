@@ -18,6 +18,7 @@
         <module>logger</module>
         <module>fileCounter</module>
         <module>valentinesDay</module>
+        <module>stream</module>
     </modules>
 
 </project>

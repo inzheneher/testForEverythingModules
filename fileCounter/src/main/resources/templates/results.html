@@ -3,22 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Results</title>
+    <style>
+        table, th, td {
+            border: 2px solid red;
+            border-collapse: collapse;
+        }
+        .text {
+            float: right;
+        }
+    </style>
 </head>
 <body>
-    <h1>Results</h1>
-    <table border="1">
+    <table style="float: left">
         <thead>
-        <tr>
-            <th>Movie name</th>
-        </tr>
+            <tr>
+                <th colspan="2" style="font-size: larger">Results</th>
+            </tr>
         </thead>
         <tbody>
-        <tr th:if="${list.isEmpty()}">
-            <td colspan="2">No movies was found</td>
-        </tr>
-        <tr th:each="movie : ${list}">
-            <td><span th:text="${movie}">Name</span></td>
-        </tr>
+            <tr th:if="${moviesMap.isEmpty()}">
+                <td colspan="2">No movies was found</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <th>Movie full name</th>
+            </tr>
+            <tr th:each="movie : ${moviesMap}">
+                <td><span th:text="${movie.key}">Id</span></td>
+                <td><span th:text="${movie.value}">Name</span></td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2" style="font-size: larger">Metadata</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${moviesMap.isEmpty()}">
+                <td colspan="2">No movies was found</td>
+            </tr>
+            <tr>
+                <th>Movies amount</th>
+            </tr>
+            <tr>
+                <td><span class="text" th:text="${moviesMap.size()}"></span></td>
+            </tr>
         </tbody>
     </table>
 </body>

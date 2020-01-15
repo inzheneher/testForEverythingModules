@@ -8,9 +8,12 @@ import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Component
 public class FileScanner {
@@ -21,16 +24,14 @@ public class FileScanner {
     private String NS = "ns";
     private String MS = "ms";
 
-    public List<String> scanner(String[] args) {
-        List<String> movieList = new ArrayList<>();
+    public Map<Integer, String> scanFileSystemAndGetMoviesMap(String[] args) {
+        Map<Integer, String> movieMap = new HashMap<>();
         if (args.length > 0) {
             START_TIME = System.currentTimeMillis();
             for (String arg : args) {
                 if (isPathExist(arg)) {
                     try {
-                        movieList = getMovieList(arg);
-//                        long moviesAmount = getMovieAmount(arg);
-//                        LOGGER.info("Total movies amount: " + moviesAmount);
+                        movieMap = getMovieMap(arg);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -43,7 +44,7 @@ public class FileScanner {
         } else {
             LOGGER.info("There is no path for search. Set the path.");
         }
-        return movieList;
+        return movieMap;
     }
 
     private void logTime(String time, long start, long stop) {
@@ -54,25 +55,19 @@ public class FileScanner {
         return Files.exists(Paths.get(path), LinkOption.NOFOLLOW_LINKS);
     }
 
-    private int getMovieAmount(String path) throws IOException {
-        List<String> movieList = Files
-                .walk(Paths.get(path))
-                .parallel()
-                .filter(Files::isRegularFile)
-                .map(Path::toString)
-                .filter(f -> f.endsWith(".avi") || f.endsWith(".mkv") || f.endsWith(".mp4"))
-                .collect(Collectors.toList());
-        movieList.forEach(System.out::println);
-        return movieList.size();
+    private int getMovieAmount(Map<Integer, String> moviesMap) throws IOException {
+        return moviesMap.size();
     }
 
-    private List<String> getMovieList(String path) throws IOException {
-        return Files
+    private Map<Integer, String> getMovieMap(String path) throws IOException {
+        List<String> moviesList = Files
                 .walk(Paths.get(path))
                 .parallel()
                 .filter(Files::isRegularFile)
                 .map(Path::toString)
                 .filter(f -> f.endsWith(".avi") || f.endsWith(".mkv") || f.endsWith(".mp4"))
                 .collect(Collectors.toList());
+
+        return IntStream.range(0, moviesList.size()).boxed().collect(Collectors.toMap(i -> ++i, moviesList::get));
     }
 }
