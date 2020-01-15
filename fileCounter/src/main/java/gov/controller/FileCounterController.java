@@ -2,6 +2,7 @@ package gov.controller;
 
 import gov.dao.PathCollector;
 import gov.service.FileScanner;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,18 +15,18 @@ import java.util.logging.Logger;
 @Controller
 public class FileCounterController {
 
+    private FileScanner fileScanner;
     private Logger logger = Logger.getLogger(FileCounterController.class.getName());
 
-    @GetMapping("/input_path")
-    public String showSubmitForm(Model model) {
-        model.addAttribute("paths", new PathCollector());
-        return "input_path";
+    @Autowired
+    public FileCounterController(FileScanner fileScanner) {
+        this.fileScanner = fileScanner;
     }
 
     @PostMapping("/input_path")
     public String submitPathsAndFindMovies(@ModelAttribute PathCollector paths, Model model) {
         logger.info("Paths: " + paths.getPath());
-        List<String> list = new FileScanner().scanner(paths.getPath().split(" "));
+        List<String> list = fileScanner.scanner(paths.getPath().split(" "));
         model.addAttribute("list", list);
         return "results";
     }

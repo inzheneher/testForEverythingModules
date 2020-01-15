@@ -1,5 +1,7 @@
 package gov.service;
 
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
@@ -10,6 +12,7 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+@Component
 public class FileScanner {
 
     private Logger LOGGER = Logger.getLogger(FileScanner.class.getName());
