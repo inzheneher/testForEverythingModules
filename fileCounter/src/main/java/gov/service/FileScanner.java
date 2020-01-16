@@ -1,5 +1,7 @@
 package gov.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -7,18 +9,16 @@ import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Component
 public class FileScanner {
 
-    private Logger LOGGER = Logger.getLogger(FileScanner.class.getName());
+    private final Logger LOGGER = LoggerFactory.getLogger(FileScanner.class);
     private long START_TIME;
     private long STOP_TIME;
     private String NS = "ns";
@@ -55,10 +55,6 @@ public class FileScanner {
         return Files.exists(Paths.get(path), LinkOption.NOFOLLOW_LINKS);
     }
 
-    private int getMovieAmount(Map<Integer, String> moviesMap) throws IOException {
-        return moviesMap.size();
-    }
-
     private Map<Integer, String> getMovieMap(String path) throws IOException {
         List<String> moviesList = Files
                 .walk(Paths.get(path))
@@ -69,5 +65,9 @@ public class FileScanner {
                 .collect(Collectors.toList());
 
         return IntStream.range(0, moviesList.size()).boxed().collect(Collectors.toMap(i -> ++i, moviesList::get));
+    }
+
+    private void saveMoviesNamesToDb(String path) {
+
     }
 }

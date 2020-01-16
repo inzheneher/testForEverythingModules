@@ -19,6 +19,7 @@
         <module>fileCounter</module>
         <module>valentinesDay</module>
         <module>stream</module>
+        <module>springDataJpa</module>
     </modules>
 
 </project>
