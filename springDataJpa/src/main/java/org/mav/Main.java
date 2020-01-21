@@ -32,11 +32,11 @@ public class Main {
             logger.info("");
 
             //fetch an individual movie by ID
-            Movie movie = repository.findById(1L);
-            logger.info("Movie found with findById(1L):");
-            logger.info("------------------------------");
-            logger.info(movie.toString());
-            logger.info("");
+//            Movie movie = repository.findById(43L);
+//            logger.info("Movie found with findById(1L):");
+//            logger.info("------------------------------");
+//            logger.info(movie.toString());
+//            logger.info("");
 
             //fetch movies by name
             logger.info("Movie found with findByName('/home/inzheneher/Home_along.avi'):");
