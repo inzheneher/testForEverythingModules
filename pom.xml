@@ -20,6 +20,7 @@
         <module>valentinesDay</module>
         <module>stream</module>
         <module>springDataJpa</module>
+        <module>robotsKill</module>
     </modules>
 
 </project>
