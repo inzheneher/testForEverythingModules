@@ -19,6 +19,7 @@
         <module>fileCounter</module>
         <module>valentinesDay</module>
         <module>webSocket</module>
+        <module>streams</module>
     </modules>
 
 </project>
