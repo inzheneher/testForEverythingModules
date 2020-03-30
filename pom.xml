@@ -22,6 +22,7 @@
         <module>streams</module>
         <module>enums</module>
         <module>casting</module>
+        <module>interfaces</module>
     </modules>
 
 </project>
