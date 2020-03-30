@@ -20,6 +20,8 @@
         <module>valentinesDay</module>
         <module>webSocket</module>
         <module>streams</module>
+        <module>enums</module>
+        <module>casting</module>
     </modules>
 
 </project>
