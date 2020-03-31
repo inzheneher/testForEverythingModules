@@ -23,6 +23,7 @@
         <module>enums</module>
         <module>casting</module>
         <module>interfaces</module>
+        <module>hackerrank</module>
     </modules>
 
 </project>

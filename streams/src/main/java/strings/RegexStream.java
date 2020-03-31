@@ -7,10 +7,10 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
-public class RegexStreamTest {
+public class RegexStream {
 
     public static void main(String[] args) {
-//1 2 2 3 1 2
+        //1 2 2 3 1 2
         List<Integer> integerList = Stream.of("4 6 5 3 3 1".replaceAll("\\s{2,}", " ").trim().split(" "))
                 .map(Integer::parseInt)
                 .sorted()
