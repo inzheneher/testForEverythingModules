@@ -24,6 +24,7 @@
         <module>casting</module>
         <module>interfaces</module>
         <module>hackerrank</module>
+        <module>bitwiseOperators</module>
     </modules>
 
 </project>
