@@ -8,8 +8,8 @@ public class Lab1 {
      **/
 
     public static void main(String[] args) {
-        int[] a = new int[]{1, 7, 1, 3, 2, 8, 4, 1, 9, 7, 3, 6, 1, 5};
-        selectionSort(a);
+        int[] a = Bench.generateSample(100, 100);
+        shellSort(a);
         System.out.println(Arrays.toString(a));
     }
 
@@ -24,6 +24,7 @@ public class Lab1 {
     }
 
     // Selection sort.
+
     public static void selectionSort(@NotNull int[] array) {
         int n = array.length;
         for (int i = 0; i < n; i++) {
@@ -48,6 +49,25 @@ public class Lab1 {
                 if (less(array[j], array[j - 1])) exchange(array, j, j - 1);
                 else break;
             }
+        }
+    }
+
+    // Shell sort.
+
+    public static void shellSort(@NotNull int[] array) {
+        int n = array.length;
+        int h = 1;
+        while (h < (n - 1) / 3) h = 3 * h + 1;
+        while (h >= 1) {
+            for (int i = 0; i < h; i++) {
+                for (int j = i; j < n; j += h) {
+                    for (int k = j; k > i; k -= h) {
+                        if (less(array[k], array[k - h])) exchange(array, k, k - h);
+                        else break;
+                    }
+                }
+            }
+            h = h / 3;
         }
     }
 

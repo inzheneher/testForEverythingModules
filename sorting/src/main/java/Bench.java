@@ -1,10 +1,3 @@
-//
-// HERE BE DRAGONS!
-//
-// You don't have to read any of this file.
-// It's just the benchmarking program.
-//
-
 import java.util.Arrays;
 import java.util.Random;
 
@@ -67,6 +60,11 @@ public class Bench {
 
     public static Function<int[], int[]> insertionSort = array -> {
         Lab1.insertionSort(array);
+        return array;
+    };
+
+    public static Function<int[], int[]> shellSort = array -> {
+        Lab1.shellSort(array);
         return array;
     };
 
@@ -176,6 +174,7 @@ public class Bench {
                         "Algorithm      | %14s | %14s | %14s\n" +
                         "Selection sort | %14s | %14s | %14s\n" +
                         "Insertion sort | %14s | %14s | %14s\n" +
+                        "Shell sort     | %14s | %14s | %14s\n" +
                         "Quicksort      | %14s | %14s | %14s\n" +
                         "Merge sort     | %14s | %14s | %14s\n",
                 size,
@@ -186,6 +185,9 @@ public class Bench {
                 execute(insertionSort, randomSample),
                 execute(insertionSort, partiallySortedSample),
                 execute(insertionSort, sortedSample),
+                execute(shellSort, randomSample),
+                execute(shellSort, partiallySortedSample),
+                execute(shellSort, sortedSample),
                 execute(quickSort, randomSample),
                 execute(quickSort, partiallySortedSample),
                 execute(quickSort, sortedSample),
