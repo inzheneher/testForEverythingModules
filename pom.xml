@@ -57,5 +57,7 @@
         <module>arrays</module>
         <module>sorting</module>
         <module>recursion</module>
+        <module>springDataJpa</module>
+        <module>robotsKill</module>
     </modules>
 </project>
