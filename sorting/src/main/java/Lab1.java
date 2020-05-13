@@ -9,8 +9,7 @@ public class Lab1 {
 
     public static void main(String[] args) {
         int[] a = Bench.generateSample(100, 100);
-        shellSort(a);
-        System.out.println(Arrays.toString(a));
+        System.out.println(Arrays.toString(mergeSort(a)));
     }
 
     private static boolean less(int a, int b) {
@@ -96,17 +95,30 @@ public class Lab1 {
 
     // Mergesort.
 
-    public static int[] mergeSort(int[] array) {
-        throw new UnsupportedOperationException();
+    public static int @NotNull [] mergeSort(int[] array) {
+        return mergeSort(array, 0, array.length - 1);
     }
 
     // Mergesort part of an array
-    private static int[] mergeSort(int[] array, int begin, int end) {
-        throw new UnsupportedOperationException();
+    private static int @NotNull [] mergeSort(int[] array, int begin, int end) {
+        if (end <= begin) return new int[]{array[end]};
+        int mid = begin + (end - begin) / 2;
+        return merge(mergeSort(array, begin, mid), mergeSort(array, mid + 1, end));
     }
 
     // Merge two sorted arrays into one
-    private static int[] merge(int[] left, int[] right) {
-        throw new UnsupportedOperationException();
+    private static int @NotNull [] merge(int @NotNull [] left, int @NotNull [] right) {
+        int resultLength = left.length + right.length;
+        int lHi = left.length - 1, rHi = right.length - 1;
+        int i, j;
+        i = j = 0;
+        int[] result = new int[resultLength];
+        for (int k = 0; k < resultLength; k++) {
+            if (i > lHi && j <= rHi) result[k] = right[j++];
+            else if (j > rHi && i <= lHi) result[k] = left[i++];
+            else if (less(left[i], right[j])) result[k] = left[i++];
+            else result[k] = right[j++];
+        }
+        return result;
     }
 }
