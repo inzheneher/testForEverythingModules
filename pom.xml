@@ -56,5 +56,6 @@
         <module>bitwiseOperators</module>
         <module>arrays</module>
         <module>sorting</module>
+        <module>recursion</module>
     </modules>
 </project>
