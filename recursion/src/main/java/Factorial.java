@@ -1,5 +1,5 @@
 /**
- * inzheneher created on 13/05/2020 inside the package - PACKAGE_NAME
+ * inzheneher created on 13/05/2020 inside the package - default
  */
 public class Factorial {
     public static void main(String[] args) {
