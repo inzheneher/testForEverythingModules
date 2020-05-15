@@ -11,6 +11,10 @@ public class Lab1 {
         int[] a = Bench.generateSample(100, 100);
         quickSort(a);
         System.out.println(Arrays.toString(a));
+//        int[] a = new int[]{7, 10, 0, 9, 3, 11, 2, 13, 8, 4, 1, 6, 5};
+//        System.out.println(Arrays.toString(a));
+//        quickSort(a);
+//        System.out.println(Arrays.toString(a));
     }
 
     private static boolean less(int a, int b) {
@@ -68,17 +72,30 @@ public class Lab1 {
     // Quicksort.
 
     public static void quickSort(int[] array) {
-        throw new UnsupportedOperationException();
+        quickSort(array, 0, array.length - 1);
     }
 
     // Quicksort part of an array
     private static void quickSort(int[] array, int begin, int end) {
+        if (end <= begin) return;
+        int i = partition(array, begin, end);
+        quickSort(array, begin, i - 1);
+        quickSort(array, i + 1, end);
     }
 
     // Partition part of an array, and return the index where the pivot
     // ended up.
     private static int partition(int[] array, int begin, int end) {
-        throw new UnsupportedOperationException();
+        int i = begin;
+        int j = end + 1;
+        while (true) {
+            while (less(array[++i], array[begin])) if (i == end) break;
+            while (less(array[begin], array[--j])) if (j == begin) break;
+            if (i >= j) break;
+            swap(array, i, j);
+        }
+        swap(array, begin, j);
+        return j;
     }
 
     // Swap two elements in an array
