@@ -9,17 +9,12 @@ public class Lab1 {
 
     public static void main(String[] args) {
         int[] a = Bench.generateSample(100, 100);
-        System.out.println(Arrays.toString(mergeSort(a)));
+        quickSort(a);
+        System.out.println(Arrays.toString(a));
     }
 
     private static boolean less(int a, int b) {
         return a - b < 0;
-    }
-
-    private static void exchange(@NotNull int[] a, int i, int j) {
-        int swap = a[i];
-        a[i] = a[j];
-        a[j] = swap;
     }
 
     // Selection sort.
@@ -35,7 +30,7 @@ public class Lab1 {
                     minValue = array[minIndex];
                 }
             }
-            if (i != minIndex) exchange(array, i, minIndex);
+            if (i != minIndex) swap(array, i, minIndex);
         }
     }
 
@@ -45,7 +40,7 @@ public class Lab1 {
         int n = array.length;
         for (int i = 0; i < n; i++) {
             for (int j = i; j > 0; j--) {
-                if (less(array[j], array[j - 1])) exchange(array, j, j - 1);
+                if (less(array[j], array[j - 1])) swap(array, j, j - 1);
                 else break;
             }
         }
@@ -61,7 +56,7 @@ public class Lab1 {
             for (int i = 0; i < h; i++) {
                 for (int j = i; j < n; j += h) {
                     for (int k = j; k > i; k -= h) {
-                        if (less(array[k], array[k - h])) exchange(array, k, k - h);
+                        if (less(array[k], array[k - h])) swap(array, k, k - h);
                         else break;
                     }
                 }
