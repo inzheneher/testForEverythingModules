@@ -8,17 +8,21 @@ public class Lab1 {
      **/
 
     public static void main(String[] args) {
-        int[] a = Bench.generateSample(100, 100);
+        int[] a = new int[]{7, 10, 0, 9, 3, 11, 2, 12, 8, 4, 1, 6, 5};
+        System.out.println(Arrays.toString(a));
         quickSort(a);
         System.out.println(Arrays.toString(a));
-//        int[] a = new int[]{7, 10, 0, 9, 3, 11, 2, 13, 8, 4, 1, 6, 5};
-//        System.out.println(Arrays.toString(a));
-//        quickSort(a);
-//        System.out.println(Arrays.toString(a));
     }
 
     private static boolean less(int a, int b) {
         return a - b < 0;
+    }
+
+    // Swap two elements in an array
+    private static void swap(@NotNull int[] array, int i, int j) {
+        int x = array[i];
+        array[i] = array[j];
+        array[j] = x;
     }
 
     // Selection sort.
@@ -76,33 +80,22 @@ public class Lab1 {
     }
 
     // Quicksort part of an array
-    private static void quickSort(int[] array, int begin, int end) {
-        if (end <= begin) return;
-        int i = partition(array, begin, end);
-        quickSort(array, begin, i - 1);
-        quickSort(array, i + 1, end);
-    }
-
-    // Partition part of an array, and return the index where the pivot
-    // ended up.
-    private static int partition(int[] array, int begin, int end) {
-        int i = begin;
-        int j = end + 1;
-        while (true) {
-            while (less(array[++i], array[begin])) if (i == end) break;
-            while (less(array[begin], array[--j])) if (j == begin) break;
-            if (i >= j) break;
-            swap(array, i, j);
-        }
-        swap(array, begin, j);
-        return j;
-    }
-
-    // Swap two elements in an array
-    private static void swap(@NotNull int[] array, int i, int j) {
-        int x = array[i];
-        array[i] = array[j];
-        array[j] = x;
+    private static void quickSort(int @NotNull [] array, int begin, int end) {
+        int i, j, k;
+        i = begin;
+        j = end;
+        k = array[(begin + end) / 2];
+        do {
+            while ((array[i] < k) && (i < end)) i++;
+            while ((k < array[j]) && (j > begin)) j--;
+            if (i <= j) {
+                swap(array, i, j);
+                i++;
+                j--;
+            }
+        } while (i <= j);
+        if (begin < j) quickSort(array, begin, j);
+        if (i < end) quickSort(array, i, end);
     }
 
     // Mergesort.
