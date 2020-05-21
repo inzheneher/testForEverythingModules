@@ -21,6 +21,17 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok-maven-plugin</artifactId>
+            <version>1.18.10.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -59,5 +70,6 @@
         <module>recursion</module>
         <module>springDataJpa</module>
         <module>robotsKill</module>
+        <module>random</module>
     </modules>
 </project>
