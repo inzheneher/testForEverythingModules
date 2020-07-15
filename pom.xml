@@ -32,6 +32,11 @@
             <artifactId>lombok-maven-plugin</artifactId>
             <version>1.18.10.0</version>
         </dependency>
+        <dependency>
+            <groupId>edu.princeton.cs</groupId>
+            <artifactId>algs4</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -71,5 +76,6 @@
         <module>springDataJpa</module>
         <module>robotsKill</module>
         <module>random</module>
+        <module>priorityQueue</module>
     </modules>
 </project>
