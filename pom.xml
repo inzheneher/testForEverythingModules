@@ -77,5 +77,6 @@
         <module>robotsKill</module>
         <module>random</module>
         <module>priorityQueue</module>
+        <module>weather</module>
     </modules>
 </project>
