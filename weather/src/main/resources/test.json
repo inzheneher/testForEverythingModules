@@ -1,264 +1,39 @@
-{
-  "@context": [
-    "https://geojson.org/geojson-ld/geojson-context.jsonld",
+{"coord": { "lon": 139,"lat": 35},
+  "weather": [
     {
-      "@version": "1.1",
-      "wx": "https://api.weather.gov/ontology#",
-      "geo": "http://www.opengis.net/ont/geosparql#",
-      "unit": "http://codes.wmo.int/common/unit/",
-      "@vocab": "https://api.weather.gov/ontology#"
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky",
+      "icon": "01n"
     }
   ],
-  "type": "Feature",
-  "geometry": {
-    "type": "Polygon",
-    "coordinates": [
-      [
-        [
-          -72.702555500000003,
-          41.675359499999999
-        ],
-        [
-          -72.707340000000002,
-          41.653821100000002
-        ],
-        [
-          -72.678516900000005,
-          41.650245200000001
-        ],
-        [
-          -72.673726400000007,
-          41.671783300000001
-        ],
-        [
-          -72.702555500000003,
-          41.675359499999999
-        ]
-      ]
-    ]
+  "base": "stations",
+  "main": {
+    "temp": 281.52,
+    "feels_like": 278.99,
+    "temp_min": 280.15,
+    "temp_max": 283.71,
+    "pressure": 1016,
+    "humidity": 93
   },
-  "properties": {
-    "updated": "2020-07-17T02:18:44+00:00",
-    "units": "us",
-    "forecastGenerator": "BaselineForecastGenerator",
-    "generatedAt": "2020-07-17T02:48:20+00:00",
-    "updateTime": "2020-07-17T02:18:44+00:00",
-    "validTimes": "2020-07-16T20:00:00+00:00/P8DT6H",
-    "elevation": {
-      "value": 50.901600000000002,
-      "unitCode": "unit:m"
-    },
-    "periods": [
-      {
-        "number": 1,
-        "name": "Tonight",
-        "startTime": "2020-07-16T22:00:00-04:00",
-        "endTime": "2020-07-17T06:00:00-04:00",
-        "isDaytime": false,
-        "temperature": 64,
-        "temperatureUnit": "F",
-        "temperatureTrend": null,
-        "windSpeed": "7 mph",
-        "windDirection": "S",
-        "icon": "https://api.weather.gov/icons/land/night/rain_showers,20/rain_showers,30?size=medium",
-        "shortForecast": "Chance Rain Showers",
-        "detailedForecast": "A chance of rain showers. Mostly cloudy, with a low around 64. South wind around 7 mph. Chance of precipitation is 30%."
-      },
-      {
-        "number": 2,
-        "name": "Friday",
-        "startTime": "2020-07-17T06:00:00-04:00",
-        "endTime": "2020-07-17T18:00:00-04:00",
-        "isDaytime": true,
-        "temperature": 79,
-        "temperatureUnit": "F",
-        "temperatureTrend": null,
-        "windSpeed": "9 mph",
-        "windDirection": "S",
-        "icon": "https://api.weather.gov/icons/land/day/rain_showers,40/tsra,30?size=medium",
-        "shortForecast": "Chance Rain Showers",
-        "detailedForecast": "A chance of rain showers before 5pm, then a chance of showers and thunderstorms. Cloudy, with a high near 79. South wind around 9 mph. Chance of precipitation is 40%."
-      },
-      {
-        "number": 3,
-        "name": "Friday Night",
-        "startTime": "2020-07-17T18:00:00-04:00",
-        "endTime": "2020-07-18T06:00:00-04:00",
-        "isDaytime": false,
-        "temperature": 68,
-        "temperatureUnit": "F",
-        "temperatureTrend": null,
-        "windSpeed": "1 to 7 mph",
-        "windDirection": "SW",
-        "icon": "https://api.weather.gov/icons/land/night/tsra_sct,30/bkn?size=medium",
-        "shortForecast": "Chance Showers And Thunderstorms then Mostly Cloudy",
-        "detailedForecast": "A chance of showers and thunderstorms before 10pm. Mostly cloudy, with a low around 68. Southwest wind 1 to 7 mph. Chance of precipitation is 30%. New rainfall amounts less than a tenth of an inch possible."
-      },
-      {
-        "number": 4,
-        "name": "Saturday",
-        "startTime": "2020-07-18T06:00:00-04:00",
-        "endTime": "2020-07-18T18:00:00-04:00",
-        "isDaytime": true,
-        "temperature": 92,
-        "temperatureUnit": "F",
-        "temperatureTrend": null,
-        "windSpeed": "2 to 7 mph",
-        "windDirection": "NW",
-        "icon": "https://api.weather.gov/icons/land/day/few?size=medium",
-        "shortForecast": "Sunny",
-        "detailedForecast": "Sunny, with a high near 92. Northwest wind 2 to 7 mph."
-      },
-      {
-        "number": 5,
-        "name": "Saturday Night",
-        "startTime": "2020-07-18T18:00:00-04:00",
-        "endTime": "2020-07-19T06:00:00-04:00",
-        "isDaytime": false,
-        "temperature": 70,
-        "temperatureUnit": "F",
-        "temperatureTrend": null,
-        "windSpeed": "2 to 7 mph",
-        "windDirection": "SW",
-        "icon": "https://api.weather.gov/icons/land/night/few?size=medium",
-        "shortForecast": "Mostly Clear",
-        "detailedForecast": "Mostly clear, with a low around 70. Southwest wind 2 to 7 mph."
-      },
-      {
-        "number": 6,
-        "name": "Sunday",
-        "startTime": "2020-07-19T06:00:00-04:00",
-        "endTime": "2020-07-19T18:00:00-04:00",
-        "isDaytime": true,
-        "temperature": 96,
-        "temperatureUnit": "F",
-        "temperatureTrend": null,
-        "windSpeed": "2 to 8 mph",
-        "windDirection": "SW",
-        "icon": "https://api.weather.gov/icons/land/day/fog/few?size=medium",
-        "shortForecast": "Patchy Fog then Sunny",
-        "detailedForecast": "Patchy fog before 7am. Sunny, with a high near 96. Southwest wind 2 to 8 mph."
-      },
-      {
-        "number": 7,
-        "name": "Sunday Night",
-        "startTime": "2020-07-19T18:00:00-04:00",
-        "endTime": "2020-07-20T06:00:00-04:00",
-        "isDaytime": false,
-        "temperature": 74,
-        "temperatureUnit": "F",
-        "temperatureTrend": null,
-        "windSpeed": "10 mph",
-        "windDirection": "SW",
-        "icon": "https://api.weather.gov/icons/land/night/sct?size=medium",
-        "shortForecast": "Partly Cloudy",
-        "detailedForecast": "Partly cloudy, with a low around 74. Southwest wind around 10 mph."
-      },
-      {
-        "number": 8,
-        "name": "Monday",
-        "startTime": "2020-07-20T06:00:00-04:00",
-        "endTime": "2020-07-20T18:00:00-04:00",
-        "isDaytime": true,
-        "temperature": 95,
-        "temperatureUnit": "F",
-        "temperatureTrend": null,
-        "windSpeed": "8 mph",
-        "windDirection": "W",
-        "icon": "https://api.weather.gov/icons/land/day/tsra_hi,30/tsra_hi,50?size=medium",
-        "shortForecast": "Chance Showers And Thunderstorms",
-        "detailedForecast": "A chance of showers and thunderstorms after 9am. Partly sunny, with a high near 95. West wind around 8 mph. Chance of precipitation is 50%."
-      },
-      {
-        "number": 9,
-        "name": "Monday Night",
-        "startTime": "2020-07-20T18:00:00-04:00",
-        "endTime": "2020-07-21T06:00:00-04:00",
-        "isDaytime": false,
-        "temperature": 71,
-        "temperatureUnit": "F",
-        "temperatureTrend": null,
-        "windSpeed": "6 mph",
-        "windDirection": "NW",
-        "icon": "https://api.weather.gov/icons/land/night/tsra_hi,30/sct?size=medium",
-        "shortForecast": "Chance Showers And Thunderstorms then Partly Cloudy",
-        "detailedForecast": "A chance of showers and thunderstorms before 9pm. Partly cloudy, with a low around 71. Northwest wind around 6 mph. Chance of precipitation is 30%."
-      },
-      {
-        "number": 10,
-        "name": "Tuesday",
-        "startTime": "2020-07-21T06:00:00-04:00",
-        "endTime": "2020-07-21T18:00:00-04:00",
-        "isDaytime": true,
-        "temperature": 92,
-        "temperatureUnit": "F",
-        "temperatureTrend": null,
-        "windSpeed": "5 mph",
-        "windDirection": "W",
-        "icon": "https://api.weather.gov/icons/land/day/sct?size=medium",
-        "shortForecast": "Mostly Sunny",
-        "detailedForecast": "Mostly sunny, with a high near 92. West wind around 5 mph."
-      },
-      {
-        "number": 11,
-        "name": "Tuesday Night",
-        "startTime": "2020-07-21T18:00:00-04:00",
-        "endTime": "2020-07-22T06:00:00-04:00",
-        "isDaytime": false,
-        "temperature": 72,
-        "temperatureUnit": "F",
-        "temperatureTrend": null,
-        "windSpeed": "3 mph",
-        "windDirection": "S",
-        "icon": "https://api.weather.gov/icons/land/night/bkn/tsra_hi,30?size=medium",
-        "shortForecast": "Mostly Cloudy then Chance Showers And Thunderstorms",
-        "detailedForecast": "A chance of showers and thunderstorms between midnight and 4am, then patchy fog and a chance of showers and thunderstorms. Mostly cloudy, with a low around 72. South wind around 3 mph. Chance of precipitation is 30%."
-      },
-      {
-        "number": 12,
-        "name": "Wednesday",
-        "startTime": "2020-07-22T06:00:00-04:00",
-        "endTime": "2020-07-22T18:00:00-04:00",
-        "isDaytime": true,
-        "temperature": 87,
-        "temperatureUnit": "F",
-        "temperatureTrend": null,
-        "windSpeed": "6 mph",
-        "windDirection": "SW",
-        "icon": "https://api.weather.gov/icons/land/day/tsra_sct,40?size=medium",
-        "shortForecast": "Patchy Fog",
-        "detailedForecast": "Patchy fog and a chance of showers and thunderstorms. Mostly cloudy, with a high near 87. Southwest wind around 6 mph. Chance of precipitation is 40%."
-      },
-      {
-        "number": 13,
-        "name": "Wednesday Night",
-        "startTime": "2020-07-22T18:00:00-04:00",
-        "endTime": "2020-07-23T06:00:00-04:00",
-        "isDaytime": false,
-        "temperature": 71,
-        "temperatureUnit": "F",
-        "temperatureTrend": null,
-        "windSpeed": "6 mph",
-        "windDirection": "SW",
-        "icon": "https://api.weather.gov/icons/land/night/tsra_hi,40/tsra_hi?size=medium",
-        "shortForecast": "Chance Showers And Thunderstorms then Patchy Fog",
-        "detailedForecast": "A chance of showers and thunderstorms before midnight, then patchy fog and a slight chance of showers and thunderstorms. Mostly cloudy, with a low around 71. Southwest wind around 6 mph. Chance of precipitation is 40%."
-      },
-      {
-        "number": 14,
-        "name": "Thursday",
-        "startTime": "2020-07-23T06:00:00-04:00",
-        "endTime": "2020-07-23T18:00:00-04:00",
-        "isDaytime": true,
-        "temperature": 86,
-        "temperatureUnit": "F",
-        "temperatureTrend": null,
-        "windSpeed": "6 mph",
-        "windDirection": "W",
-        "icon": "https://api.weather.gov/icons/land/day/tsra_hi/tsra_hi,30?size=medium",
-        "shortForecast": "Chance Showers And Thunderstorms",
-        "detailedForecast": "Patchy fog before 8am, then a chance of showers and thunderstorms. Partly sunny, with a high near 86. West wind around 6 mph. Chance of precipitation is 30%."
-      }
-    ]
-  }
+  "wind": {
+    "speed": 0.47,
+    "deg": 107.538
+  },
+  "clouds": {
+    "all": 2
+  },
+  "dt": 1560350192,
+  "sys": {
+    "type": 3,
+    "id": 2019346,
+    "message": 0.0065,
+    "country": "JP",
+    "sunrise": 1560281377,
+    "sunset": 1560333478
+  },
+  "timezone": 32400,
+  "id": 1851632,
+  "name": "Shuzenji",
+  "cod": 200
 }

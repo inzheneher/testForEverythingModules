@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Enter GPS coordinates here</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <form th:action="@{/setCoordinates}" method="post">
+        <div><label>Latitude <input type="text" name="lat"></label></div>
+        <div><label>Longitude <input type="text" name="lon"></label></div>
+        <div><input type="submit" value="See weather"></div>
+    </form>
+</body>
+</html>

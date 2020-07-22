@@ -1,6 +1,8 @@
 package controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * inzheneher created on 22/07/2020 inside the package - controllers
@@ -8,4 +10,8 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class CoordinatesController {
 
+    @GetMapping("/coordinates")
+    public String addCoordinates(Model model) {
+        return "coordinates";
+    }
 }
