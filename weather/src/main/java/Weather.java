@@ -18,9 +18,7 @@ public class Weather {
     public static void main(String[] args) {
         try {
             Properties prop = new Properties();
-            //TODO: use relative path
-            prop.load(new FileInputStream("/home/inzheneher/WORK/TEST/testForEverythingModules/weather/src/main/resources/request.properties"));
-            //TODO: read API from file
+            prop.load(new FileInputStream("weather/src/main/resources/request.properties"));
             //TODO: get coordinates from web page
             String baseUrl = prop.getProperty("baseUrl");
             String lat = "-19.134422";
