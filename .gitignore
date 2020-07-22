@@ -1,3 +1,4 @@
 .idea
 **/target/*
 **/*.iml
+weather/src/main/resources/request.properties
