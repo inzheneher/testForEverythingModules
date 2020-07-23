@@ -1,30 +1,32 @@
 package services;
 
 import com.google.gson.Gson;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import responses.OpenWeatherResponse;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.Properties;
 
 /**
  * inzheneher created on 22/07/2020 inside the package - services
  */
 @Service
 public class RequestService {
+    @Value("${units}")
+    private String units;
+    @Value("${appId}")
+    private String appId;
+    @Value("${baseUrl}")
+    private String baseUrl;
+
     public OpenWeatherResponse getOpenWeatherResponse(String latitude, String longitude) {
         StringBuilder response = new StringBuilder();
         try {
-            Properties prop = new Properties();
-            prop.load(new FileInputStream("weather/src/main/resources/request.properties"));
-            String baseUrl = prop.getProperty("baseUrl");
-            String units = prop.getProperty("units");
-            String appId = prop.getProperty("appId");
+            //TODO: change the way of accessing properties to spring way
             String requestUrl = String.format("%slat=%s&lon=%s&units=%s&appid=%s", baseUrl, latitude, longitude, units, appId);
             URL url = new URL(requestUrl);
             HttpsURLConnection httpsConn = (HttpsURLConnection) url.openConnection();

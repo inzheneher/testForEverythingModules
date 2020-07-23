@@ -19,10 +19,13 @@ public class WeatherController {
         this.requestService = requestService;
     }
 
+    //TODO: add button to redirect to main page
+
     @PostMapping("/setCoordinates")
     public String showCoordinates(@RequestParam(name = "lat", required = false, defaultValue = "0") String lat,
                                   @RequestParam(name = "lon", required = false, defaultValue = "0") String lon,
                                   Model model) {
+        //TODO: add log each request to db
         OpenWeatherResponse openWeatherResponse = requestService.getOpenWeatherResponse(lat, lon);
         model.addAttribute("temperature", String.valueOf(openWeatherResponse.getMain().getTemp()));
         return "setCoordinates";
