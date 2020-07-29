@@ -2,7 +2,6 @@ package services;
 
 import com.google.gson.Gson;
 import entity.Request;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import repository.IRequestService;
@@ -21,14 +20,13 @@ import java.util.List;
  */
 @Service
 public class RequestService implements IRequestService {
+    private final RequestLogRepository repository;
     @Value("${units}")
     private String units;
     @Value("${appId}")
     private String appId;
     @Value("${baseUrl}")
     private String baseUrl;
-
-    private final RequestLogRepository repository;
 
     public RequestService(RequestLogRepository repository) {
         this.repository = repository;

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import repository.RequestLogRepository;
 import responses.OpenWeatherResponse;
 import services.RequestService;
 
@@ -35,8 +34,8 @@ public class WeatherController {
         requestService.save(
                 new Request(
                         new Timestamp(System.currentTimeMillis()),
-                        Double.valueOf(lat),
-                        Double.valueOf(lon),
+                        lat,
+                        lon,
                         new Gson().toJson(openWeatherResponse, OpenWeatherResponse.class)));
         model.addAttribute("temperature", String.valueOf(openWeatherResponse.getMain().getTemp()));
         return "setCoordinates";

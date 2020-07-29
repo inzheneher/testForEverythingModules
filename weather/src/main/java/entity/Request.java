@@ -13,15 +13,17 @@ public class Request {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Timestamp timestamp;
-    private Double latitude;
-    private Double longitude;
-    @Column(columnDefinition="text")
+    @Column(columnDefinition = "varchar(16)")
+    private String latitude;
+    @Column(columnDefinition = "varchar(16)")
+    private String longitude;
+    @Column(columnDefinition = "text")
     private String respond;
 
     protected Request() {
     }
 
-    public Request(Timestamp timestamp, Double latitude, Double longitude, String respond) {
+    public Request(Timestamp timestamp, String latitude, String longitude, String respond) {
         this.timestamp = timestamp;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -36,11 +38,11 @@ public class Request {
         return timestamp;
     }
 
-    public Double getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public Double getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
