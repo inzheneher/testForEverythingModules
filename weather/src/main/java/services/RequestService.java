@@ -1,8 +1,12 @@
 package services;
 
 import com.google.gson.Gson;
+import entity.Request;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import repository.IRequestService;
+import repository.RequestLogRepository;
 import responses.OpenWeatherResponse;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -10,12 +14,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.List;
 
 /**
  * inzheneher created on 22/07/2020 inside the package - services
  */
 @Service
-public class RequestService {
+public class RequestService implements IRequestService {
     @Value("${units}")
     private String units;
     @Value("${appId}")
@@ -23,10 +28,15 @@ public class RequestService {
     @Value("${baseUrl}")
     private String baseUrl;
 
+    private final RequestLogRepository repository;
+
+    public RequestService(RequestLogRepository repository) {
+        this.repository = repository;
+    }
+
     public OpenWeatherResponse getOpenWeatherResponse(String latitude, String longitude) {
         StringBuilder response = new StringBuilder();
         try {
-            //TODO: change the way of accessing properties to spring way
             String requestUrl = String.format("%slat=%s&lon=%s&units=%s&appid=%s", baseUrl, latitude, longitude, units, appId);
             URL url = new URL(requestUrl);
             HttpsURLConnection httpsConn = (HttpsURLConnection) url.openConnection();
@@ -42,5 +52,15 @@ public class RequestService {
             e.printStackTrace();
         }
         return new Gson().fromJson(response.toString(), OpenWeatherResponse.class);
+    }
+
+
+    @Override
+    public List<Request> findAll() {
+        return (List<Request>) repository.findAll();
+    }
+
+    public Request save(Request request) {
+        return repository.save(request);
     }
 }
