@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import responses.OpenWeatherResponse;
+import utils.ResponseAndJson;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
@@ -23,7 +24,7 @@ public class RequestService {
     @Value("${baseUrl}")
     private String baseUrl;
 
-    public OpenWeatherResponse getOpenWeatherResponse(String latitude, String longitude) {
+    public ResponseAndJson getOpenWeatherResponseAndJson(String latitude, String longitude) {
         StringBuilder response = new StringBuilder();
         try {
             String requestUrl = String.format("%slat=%s&lon=%s&units=%s&appid=%s", baseUrl, latitude, longitude, units, appId);
@@ -40,6 +41,7 @@ public class RequestService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new Gson().fromJson(response.toString(), OpenWeatherResponse.class);
+        String _response = response.toString();
+        return new ResponseAndJson(new Gson().fromJson(_response, OpenWeatherResponse.class), _response);
     }
 }

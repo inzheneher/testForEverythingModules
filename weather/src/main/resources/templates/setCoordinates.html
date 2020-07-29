@@ -6,5 +6,8 @@
 </head>
 <body>
     <p th:text="'Temperature at coordinates is: ' + ${temperature} + '°C'"/>
+    <form action="/coordinates">
+        <input type="submit" value="Back"/>
+    </form>
 </body>
 </html>
