@@ -6,8 +6,8 @@
 </head>
 <body>
     <form method="post" th:action="@{/setCoordinates}">
-        <label>Latitude </label><input name="lat" type="text">
-        <label>Longitude </label><input name="lon" type="text">
+        <label>Latitude </label><input name="lat" type="text" th:value="${lat}">
+        <label>Longitude </label><input name="lon" type="text" th:value="${lon}">
         <input type="submit" value="See weather">
     </form>
 </body>

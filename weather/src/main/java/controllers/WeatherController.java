@@ -9,6 +9,7 @@ import repository.RequestLogRepository;
 import services.RequestService;
 import utils.ResponseAndJson;
 
+import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 
 /**
@@ -30,7 +31,8 @@ public class WeatherController {
     @PostMapping("/setCoordinates")
     public String showCoordinates(@RequestParam(name = "lat", required = false, defaultValue = "0") String lat,
                                   @RequestParam(name = "lon", required = false, defaultValue = "0") String lon,
-                                  Model model) {
+                                  Model model,
+                                  HttpSession session) {
         ResponseAndJson responseAndJson = requestService.getOpenWeatherResponseAndJson(lat, lon);
         requestLogRepository.save(
                 new Request(
@@ -39,6 +41,8 @@ public class WeatherController {
                         lon,
                         responseAndJson.getJson()));
         model.addAttribute("temperature", String.valueOf(responseAndJson.getResponse().getMain().getTemp()));
+        session.setAttribute("lat", lat);
+        session.setAttribute("lon", lon);
         return "setCoordinates";
     }
 }
