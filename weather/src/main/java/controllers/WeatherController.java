@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import repository.RequestLogRepository;
 import responses.OpenWeatherResponse;
 import services.RequestService;
 
@@ -18,9 +19,11 @@ import java.sql.Timestamp;
 public class WeatherController {
 
     private final RequestService requestService;
+    private final RequestLogRepository requestLogRepository;
 
-    public WeatherController(RequestService requestService) {
+    public WeatherController(RequestService requestService, RequestLogRepository requestLogRepository) {
         this.requestService = requestService;
+        this.requestLogRepository = requestLogRepository;
     }
 
     //TODO: add button to redirect to main page
@@ -31,7 +34,7 @@ public class WeatherController {
                                   Model model) {
         //TODO: change double to string in db and in code
         OpenWeatherResponse openWeatherResponse = requestService.getOpenWeatherResponse(lat, lon);
-        requestService.save(
+        requestLogRepository.save(
                 new Request(
                         new Timestamp(System.currentTimeMillis()),
                         lat,
