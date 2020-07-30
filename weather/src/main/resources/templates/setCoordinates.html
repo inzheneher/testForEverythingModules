@@ -5,7 +5,7 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
 </head>
 <body>
-    <p th:text="'Temperature at coordinates is: ' + ${temperature} + '°C'"/>
+    <p th:text="'Temperature at coordinates is: ' + ${temperature} + '°C'"></p>
     <form method="post" th:action="@{/coordinates}">
         <input type="submit" value="Back"/>
     </form>

@@ -1,6 +1,7 @@
 package services;
 
 import com.google.gson.Gson;
+import entity.Request;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import responses.OpenWeatherResponse;
@@ -11,6 +12,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * inzheneher created on 22/07/2020 inside the package - services
@@ -43,5 +46,18 @@ public class RequestService {
         }
         String _response = response.toString();
         return new ResponseAndJson(new Gson().fromJson(_response, OpenWeatherResponse.class), _response);
+    }
+
+    public List<Request> setList(Object o) {
+        List<Request> list = new ArrayList<>();
+        if (o instanceof List) {
+            for (int i = 0; i < ((List<?>) o).size(); i++) {
+                Object item = ((List<?>) o).get(i);
+                if (item instanceof Request) {
+                    list.add((Request) item);
+                }
+            }
+        }
+        return list;
     }
 }
