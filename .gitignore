@@ -2,3 +2,4 @@
 **/target/*
 **/*.iml
 weather/src/main/resources/request.properties
+weather/src/main/resources/application.properties

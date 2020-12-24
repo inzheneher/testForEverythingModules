@@ -32,7 +32,7 @@ public class Main {
             logger.info("");
 
             //fetch an individual movie by ID
-//            Movie movie = repository.findById(43L);
+//            Movie movie = com.mav.repository.findById(43L);
 //            logger.info("Movie found with findById(1L):");
 //            logger.info("------------------------------");
 //            logger.info(movie.toString());

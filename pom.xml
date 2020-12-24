@@ -78,5 +78,7 @@
         <module>random</module>
         <module>priorityQueue</module>
         <module>weather</module>
+        <module>springDataJpa2</module>
+        <module>kafka</module>
     </modules>
 </project>
