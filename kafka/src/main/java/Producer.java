@@ -19,7 +19,7 @@ public class Producer {
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        props.put("acks", "all");
+        props.put("enable.auto.commit", "true");
         producer = new KafkaProducer<>(props);
     }
 

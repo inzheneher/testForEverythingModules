@@ -80,5 +80,8 @@
         <module>weather</module>
         <module>springDataJpa2</module>
         <module>kafka</module>
+        <module>lambdas</module>
+        <module>calculator</module>
+        <module>regex</module>
     </modules>
 </project>
