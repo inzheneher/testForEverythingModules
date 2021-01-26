@@ -16,7 +16,6 @@ public class Main {
         Pattern patIP4 = Pattern.compile(IP4V_REGEX);
         Pattern patIP6 = Pattern.compile(IP6V_REGEX);
         if (patIP4.matcher(IP).matches()) return "IPv4";
-        else if (patIP6.matcher(IP).matches()) return "IPv6";
-        else return "Neither";
+        return patIP6.matcher(IP).matches()? "IPv6" : "Neither";
     }
 }
