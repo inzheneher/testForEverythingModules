@@ -83,5 +83,6 @@
         <module>lambdas</module>
         <module>calculator</module>
         <module>regex</module>
+        <module>threads</module>
     </modules>
 </project>
