@@ -1,8 +1,12 @@
+package pools;
+
+import utils.Task;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * inzheneher created on 31/01/2021 inside the package - PACKAGE_NAME
+ * inzheneher created on 31/01/2021 inside the package - pools
  */
 public class CachedPoolThread {
     public static void main(String[] args) {

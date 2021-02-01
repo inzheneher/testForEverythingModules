@@ -1,5 +1,7 @@
+package utils;
+
 /**
- * inzheneher created on 31/01/2021 inside the package - PACKAGE_NAME
+ * inzheneher created on 01/02/2021 inside the package - utils
  */
 public class Task implements Runnable {
     @Override

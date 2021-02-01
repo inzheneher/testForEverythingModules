@@ -1,10 +1,14 @@
+package pools;
+
+import utils.Task;
+
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 /**
- * inzheneher created on 31/01/2021 inside the package - PACKAGE_NAME
+ * inzheneher created on 31/01/2021 inside the package - pools
  */
 public class ScheduledPoolThread {
     public static void main(String[] args) {

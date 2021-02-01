@@ -1,5 +1,9 @@
+package direct;
+
+import utils.Task;
+
 /**
- * inzheneher created on 31/01/2021 inside the package - PACKAGE_NAME
+ * inzheneher created on 31/01/2021 inside the package - direct
  */
 public class SingleThread {
     public static void main(String[] args) {
